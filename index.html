@@ -137,12 +137,14 @@
 
         .share-button svg { width: 20px; height: 20px; }
 
+        /* --- LOGO ATUALIZADA (TAMANHO MAIOR MOBILE) --- */
         .main-logo {
-            width: 200px;
+            width: 400px; /* Aumentado significativamente */
+            max-width: 250%; /* Garante que não quebre a tela em celulares muito pequenos */
             height: auto;
-            max-height: 120px;
+            max-height: 400px; /* Espaço para crescer */
             object-fit: contain;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
             filter: grayscale(1) brightness(2);
         }
 
@@ -306,10 +308,30 @@
             .whatsapp-button:hover {
                 transform: translate(-3px, -3px);
                 box-shadow: 9px 9px 0px #000000;
+                animation: none; /* Para a animação de pulso para focar no clique */
             }
         }
 
-        /* --- BOTÃO WHATSAPP ATUALIZADO --- */
+        /* --- ANIMAÇÕES DE "AO VIVO" E NOTIFICAÇÃO --- */
+        @keyframes pulseLive {
+            0% { box-shadow: 4px 4px 0px #000000, 0 0 0 0 rgba(229, 9, 20, 0.7); }
+            70% { box-shadow: 4px 4px 0px #000000, 0 0 0 15px rgba(229, 9, 20, 0); }
+            100% { box-shadow: 4px 4px 0px #000000, 0 0 0 0 rgba(229, 9, 20, 0); }
+        }
+
+        @keyframes wiggleIcon {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30%, 50% { transform: rotate(-15deg) scale(1.1); }
+            20%, 40% { transform: rotate(15deg) scale(1.1); }
+            60% { transform: rotate(0deg) scale(1); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* --- BOTÃO WHATSAPP ATUALIZADO COM EFEITOS LIVE --- */
         .whatsapp-button {
             position: fixed;
             bottom: 20px;
@@ -323,15 +345,27 @@
             gap: 8px;
             text-decoration: none;
             font-size: 20px;
-            box-shadow: 4px 4px 0px #000000; /* Sombra Preta */
             z-index: 1000;
+            animation: pulseLive 2s infinite; /* Radar circulando */
         }
 
         .whatsapp-button .whatsapp-icon {
             width: 24px;
             height: 24px;
-            /* Filtro para converter qualquer ícone colorido em branco absoluto */
             filter: brightness(0) invert(1);
+            animation: wiggleIcon 2.5s infinite; /* Efeito do ícone chamando */
+        }
+
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #25D366; /* Verde online */
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 2px;
+            margin-right: -2px;
+            box-shadow: 0 0 5px #25D366;
+            animation: blink 1.5s infinite; /* Bolinha piscando */
         }
 
         /* --- MODAL DE VÍDEO --- */
@@ -413,7 +447,10 @@
             .branding-area { padding-top: 40px; }
             .main-title { font-size: 64px; text-shadow: 3px 3px 0px var(--accent-color); }
             .main-subtitle { font-size: 22px; }
-            .main-logo { width: 280px; max-height: 160px; margin-bottom: 30px; }
+            
+            /* --- LOGO ATUALIZADA (TAMANHO MAIOR DESKTOP/TABLET) --- */
+            .main-logo { width: 450px; max-width: 100%; max-height: 250px; margin-bottom: 30px; }
+            
             .tough-love-box { padding: 30px; }
             .badge-aviso { font-size: 20px; padding: 4px 20px; }
             .tough-love-text { font-size: 18px; }
@@ -434,7 +471,6 @@
                 font-size: 26px;
                 bottom: 30px;
                 right: 30px;
-                box-shadow: 6px 6px 0px #000000;
             }
             .whatsapp-button .whatsapp-icon { width: 28px; height: 28px; }
 
@@ -457,7 +493,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M13 4.5a2.5 2.5 0 11.702 4.283l-4.423 2.212a2.513 2.513 0 010 1.01l4.423 2.212a2.5 2.5 0 11-.53 1.06l-4.423-2.212a2.5 2.5 0 110-3.132l4.423-2.212A2.5 2.5 0 0113 4.5z" /></svg>
             </button>
             
-            <img src="logopaiise.png" alt="Logo PAIISE" class="main-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/280x150/000000/e50914?text=LOGO+PAIISE';">
+            <img src="logopaiise.png" alt="Logo PAIISE" class="main-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/450x250/000000/e50914?text=LOGO+PAIISE';">
             
             <h2 class="main-title">TRANSFORME SUA SALA NO MELHOR LUGAR DO MUNDO.</h2>
             
@@ -484,6 +520,7 @@
 
     <a href="https://wa.me/message/DQJBWVDS3BJ4N1" target="_blank" class="whatsapp-button" title="Fale com Rodrigo Online">
         <img src="wattslogo.png" alt="WhatsApp Icon" class="whatsapp-icon" onerror="this.style.display='none'">
+        <span class="online-dot"></span>
         <span>RODRIGO ONLINE</span>
     </a>
 
