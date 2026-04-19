@@ -1,508 +1,679 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#000000" />
-  <title>PAIISE | O MELHOR STREAMING DO BRASIL.</title>
-  <link rel="icon" type="image/png" href="logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-    /* =========================================
-       VARIÁVEIS E RESET GLOBAL
-       ========================================= */
-    :root {
-      --bg: #000000;
-      --text: #ffffff;
-      --muted: #b8b8b8;
-      --muted-2: #8d8d8d;
-      --primary: #E50914;
-      --primary-hover: #ff1212;
-      --shadow: 0 30px 80px rgba(0,0,0,.8);
-      --nav-h: 84px;
-      --container: 1240px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PAIISE - Produtos Selecionados.</title>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    <link rel="icon" href="logopaiise.png" type="image/jpg">
+    <link rel="apple-touch-icon" href="logopaiise.png">
 
-    html {
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
+    <style>
+        /* ESTILO CINEMA PREMIUM - ESTRUTURA BLINDADA PARA MOBILE/TABLET */
+        :root {
+            --background-color: #000000;
+            --card-background: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #e5e5e5;
+            --accent-color: #e50914; 
+            --accent-rgb: 229, 9, 20;
+            --border-color: #1f1f1f;
+            --font-main: 'Bebas Neue', sans-serif;
+        }
 
-    body.modal-open {
-      overflow: hidden; 
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            letter-spacing: 0.5px;
+        }
 
-    a, button { -webkit-tap-highlight-color: transparent; }
-    
-    .container {
-      width: min(100% - 32px, var(--container));
-      margin-inline: auto;
-    }
+        /* TRAVA DE EIXO X: Impede o celular de balançar para os lados */
+        html, body {
+            max-width: 100vw;
+            overflow-x: hidden;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+        }
 
-    .section { padding: 1px 0; }
+        body {
+            padding-bottom: 80px;
+            background: radial-gradient(circle, #0f0f0f 0%, #000000 100%);
+            -webkit-font-smoothing: antialiased; /* Suaviza as fontes no mobile */
+        }
 
-    /* =========================================
-       NAVBAR & LOGO PREMIUM (PURO CSS)
-       ========================================= */
-    .navbar {
-      position: fixed;
-      inset: 0 0 auto 0;
-      height: var(--nav-h);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 5%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 70%, transparent 100%);
-      backdrop-filter: blur(5px);
-      z-index: 5000;
-    }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px;
+        }
 
-    .logo {
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-    }
+        /* --- BRANDING AREA --- */
+        .branding-area {
+            position: relative;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 30px;
+        }
 
-    .logo-text {
-      font-family: 'Inter', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      letter-spacing: 0.15em;
-      color: #ffffff;
-      text-transform: uppercase;
-    }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .logo-text .accent {
-      color: var(--primary);
-    }
+        .tough-love-box {
+            background: #000;
+            border: 2px solid var(--accent-color);
+            padding: 15px;
+            max-width: 700px;
+            margin: 20px auto;
+            animation: fadeInDown 0.6s ease-out;
+            text-align: center;
+            box-shadow: inset 0 0 15px rgba(var(--accent-rgb), 0.2), 0 0 20px rgba(0,0,0,1);
+            width: 100%;
+        }
 
-    .btn-nav {
-      background: var(--primary);
-      color: #fff;
-      padding: 10px 24px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: background 0.3s, transform 0.3s;
-    }
+        .badge-aviso {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            font-size: 16px;
+            padding: 4px 16px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-    .btn-nav:hover {
-      background: var(--primary-hover);
-      transform: scale(1.05);
-    }
+        .tough-love-text {
+            font-size: 16px;
+            line-height: 1.3;
+            color: var(--text-primary);
+        }
 
-    /* =========================================
-       HERO MODERN (Apple/Netflix Vibe)
-       ========================================= */
-    .hero-modern {
-      padding: calc(var(--nav-h) + 60px) 5% 80px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      min-height: 100vh;
-      background: radial-gradient(circle at top, rgba(26,26,26,0.8) 0%, #000000 70%);
-    }
+        .tough-love-text strong {
+            color: var(--accent-color);
+        }
 
-    .hero-headline {
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      font-weight: 900;
-      max-width: 900px;
-      margin-bottom: 40px;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
+        .main-title {
+            font-size: 42px;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            text-shadow: 2px 2px 0px var(--accent-color);
+            animation: fadeInDown 0.5s ease-out;
+        }
 
-    /* =========================================
-       PLAYER WRAPPER E MÁSCARA DO DRIVE
-       ========================================= */
-    .player-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 1100px;
-      aspect-ratio: 16/9;
-      background: #111;
-      border-radius: 12px;
-      margin-bottom: 50px;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.05);
-    }
+        .main-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+            padding: 0 10px;
+        }
 
-    /* ESTA É A MÁSCARA QUE BLOQUEIA O BOTÃO NO CANTO SUPERIOR DIREITO */
-    .mascara-botao-drive {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 70px;  
-      height: 70px; 
-      background: transparent; 
-      z-index: 99;  
-    }
+        /* --- BOTÃO COMPARTILHAR --- */
+        .share-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.5); /* Fundo sutil para não sumir no mobile */
+            border: 2px solid var(--text-primary);
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
 
-    .drive-iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
+        .share-button svg { width: 20px; height: 20px; }
 
-    /* =========================================
-       BOTÕES PRINCIPAIS E SUBTEXTOS
-       ========================================= */
-    .hero-actions {
-      display: flex;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: center;
-      width: 100%;
-    }
+        /* --- LOGO ATUALIZADA (TAMANHO MAIOR MOBILE) --- */
+        .main-logo {
+            width: 400px; /* Aumentado significativamente */
+            max-width: 250%; /* Garante que não quebre a tela em celulares muito pequenos */
+            height: auto;
+            max-height: 400px; /* Espaço para crescer */
+            object-fit: contain;
+            margin-bottom: 0px;
+            filter: grayscale(1) brightness(2);
+        }
 
-    .action-group {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
+        /* --- BUSCA --- */
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
-    .btn-main {
-      appearance: none;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: #ffffff;
-      color: #000000;
-      padding: 20px 40px;
-      font-weight: 900;
-      border-radius: 4px;
-      font-size: 1.1rem;
-      transition: 0.3s;
-    }
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            color: var(--accent-color);
+        }
 
-    .btn-main:hover {
-      transform: scale(1.05);
-      background: var(--primary);
-      color: #fff;
-    }
+        #search-input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            background-color: transparent;
+            font-size: 18px;
+            color: var(--text-primary);
+            outline: none;
+            text-transform: uppercase;
+            border-radius: 0; /* Previne bordas arredondadas automáticas do iOS */
+            -webkit-appearance: none;
+        }
 
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-    }
+        #search-input:focus {
+            border-bottom-color: var(--accent-color);
+        }
 
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.2);
-      color: #ffffff;
-    }
+        /* --- GRADE DE PRODUTOS --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 100%;
+        }
 
-    .btn-subtext {
-      font-size: 0.85rem;
-      color: #888888;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-    }
+        .product-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            /* Base estática para celular (sem transição de transform) */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    /* =========================================
-       POPUP / PAYWALL
-       ========================================= */
-    .paywall-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      display: none; 
-      align-items: center;
-      justify-content: center;
-      z-index: 99999;
-      padding: 20px;
-    }
+        .media-container {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            position: relative;
+            background-color: #000;
+            overflow: hidden;
+        }
 
-    .paywall-card {
-      background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
-      padding: 40px;
-      border-radius: 16px;
-      text-align: center;
-      max-width: 500px;
-      width: 100%;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 40px 100px rgba(0,0,0,0.8);
-      animation: popIn 0.3s ease-out forwards;
-    }
+        .media-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1) brightness(0.9);
+        }
 
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.95) translateY(10px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
+        .play-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 35px;
+            height: 35px;
+            background-color: var(--accent-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 5;
+        }
 
-    .card-header {
-      color: var(--primary);
-      font-weight: 900;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      margin-bottom: 15px;
-      display: block;
-    }
+        .play-button svg { width: 18px; height: 18px; }
 
-    .paywall-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
+        .info-container {
+            padding: 10px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
 
-    .paywall-card h2 {
-      font-size: 2rem;
-      font-family: 'Bebas Neue', sans-serif;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-    }
+        .product-id {
+            font-size: 14px;
+            color: var(--accent-color);
+            margin-bottom: 2px;
+        }
 
-    .paywall-card p {
-      color: var(--muted);
-      line-height: 1.6;
-      margin-bottom: 30px;
-      font-size: 1.05rem;
-    }
+        .product-name {
+            font-size: 16px;
+            color: var(--text-primary);
+            line-height: 1.1;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            
+            /* Trava mágica de texto: Trunca perfeitamente em 2 linhas com "..." no final */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 35px; 
+        }
 
-    .paywall-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
+        .product-price {
+            font-size: 22px;
+            color: var(--text-primary);
+            background: var(--accent-color);
+            display: inline-block;
+            padding: 2px 8px;
+            align-self: flex-start;
+        }
 
-    .btn-buy-now {
-      background: var(--primary);
-      color: #fff;
-      padding: 18px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 900;
-      font-size: 1.1rem;
-      transition: background 0.3s, transform 0.3s;
-      width: 100%;
-    }
+        /* --- EFEITOS EXCLUSIVOS PARA PC (Evita Tremor no Celular) --- */
+        @media (hover: hover) and (pointer: fine) {
+            .share-button:hover {
+                background-color: var(--accent-color);
+                border-color: var(--accent-color);
+                transform: rotate(90deg);
+            }
+            .main-logo:hover {
+                filter: grayscale(0) brightness(1);
+            }
+            .product-card {
+                transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+            .product-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--accent-color);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.8), 0 0 10px rgba(var(--accent-rgb), 0.3);
+                z-index: 2;
+            }
+            .media-image { transition: filter 0.5s ease, transform 0.5s ease; }
+            .product-card:hover .media-image {
+                filter: contrast(1.2) brightness(1.1);
+                transform: scale(1.05);
+            }
+            .play-button { transition: transform 0.3s ease; }
+            .play-button:hover { transform: scale(1.1); }
+            
+            /* Modificação exclusiva do hover do WhatsApp */
+            .whatsapp-button:hover {
+                transform: translate(-3px, -3px);
+                box-shadow: 9px 9px 0px #000000;
+                animation: none; /* Para a animação de pulso para focar no clique */
+            }
+        }
 
-    .btn-buy-now:hover {
-      background: var(--primary-hover);
-      transform: translateY(-2px);
-    }
+        /* --- ANIMAÇÕES DE "AO VIVO" E NOTIFICAÇÃO --- */
+        @keyframes pulseLive {
+            0% { box-shadow: 4px 4px 0px #000000, 0 0 0 0 rgba(229, 9, 20, 0.7); }
+            70% { box-shadow: 4px 4px 0px #000000, 0 0 0 15px rgba(229, 9, 20, 0); }
+            100% { box-shadow: 4px 4px 0px #000000, 0 0 0 0 rgba(229, 9, 20, 0); }
+        }
 
-    .btn-resume {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-      padding: 16px;
-      border-radius: 6px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.3s;
-      width: 100%;
-    }
+        @keyframes wiggleIcon {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30%, 50% { transform: rotate(-15deg) scale(1.1); }
+            20%, 40% { transform: rotate(15deg) scale(1.1); }
+            60% { transform: rotate(0deg) scale(1); }
+        }
 
-    .btn-resume:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.4);
-    }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
 
-    /* =========================================
-       SEÇÕES COMPLEMENTARES (Features, FAQ)
-       ========================================= */
-    .features-grid, .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
+        /* --- BOTÃO WHATSAPP ATUALIZADO COM EFEITOS LIVE --- */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color); /* Vermelho */
+            color: #ffffff; /* Letras Brancas */
+            border: 2px solid #000000; /* Borda Preta */
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 20px;
+            z-index: 1000;
+            animation: pulseLive 2s infinite; /* Radar circulando */
+        }
 
-    .feature-card, .faq-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 30px;
-      transition: transform 0.3s;
-    }
+        .whatsapp-button .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+            animation: wiggleIcon 2.5s infinite; /* Efeito do ícone chamando */
+        }
 
-    .feature-card:hover { transform: translateY(-5px); }
-    
-    .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(229,9,20,0.1);
-      border-radius: 12px;
-      border: 1px solid rgba(229,9,20,0.3);
-    }
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #25D366; /* Verde online */
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 2px;
+            margin-right: -2px;
+            box-shadow: 0 0 5px #25D366;
+            animation: blink 1.5s infinite; /* Bolinha piscando */
+        }
 
-    .feature-card h3, .faq-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      color: #fff;
-    }
+        /* --- MODAL DE VÍDEO --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
 
-    .feature-card p, .faq-card p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
+        .modal-overlay.hidden { opacity: 0; pointer-events: none; }
 
-    .footer {
-      text-align: center;
-      padding: 40px 0;
-      color: var(--muted-2);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
+        .modal-content {
+            background-color: #000;
+            width: 95%;
+            max-width: 1100px;
+            border: 1px solid var(--accent-color);
+            position: relative;
+        }
 
-    /* Responsividade */
-    @media (max-width: 768px) {
-      .hero-modern { padding-top: calc(var(--nav-h) + 30px); }
-      .hero-headline { font-size: 2.2rem; }
-      .hero-actions { flex-direction: column; gap: 20px; }
-      .btn-main { width: 100%; }
-    }
-  </style>
+        .close-button {
+            position: absolute;
+            top: -45px;
+            right: 0;
+            background: none;
+            color: white;
+            border: none;
+            font-size: 35px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .video-player-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            width: 100%;
+        }
+
+        .video-player-container iframe,
+        .video-player-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- RODAPÉ --- */
+        .site-footer {
+            padding: 30px 16px;
+            border-top: 4px solid var(--accent-color);
+            text-align: center;
+            background: #050505;
+            width: 100%;
+        }
+
+        .site-footer p { font-size: 16px; margin-bottom: 8px; }
+        .site-footer a { color: var(--accent-color); text-decoration: none; font-size: 18px; }
+
+        .no-results-message {
+            text-align: center;
+            padding: 60px 0;
+            font-size: 28px;
+            color: var(--accent-color);
+        }
+
+        /* =========================================================
+            RESPONSIVIDADE (TABLET E PC)
+            ========================================================= */
+        @media (min-width: 768px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .branding-area { padding-top: 40px; }
+            .main-title { font-size: 64px; text-shadow: 3px 3px 0px var(--accent-color); }
+            .main-subtitle { font-size: 22px; }
+            
+            /* --- LOGO ATUALIZADA (TAMANHO MAIOR DESKTOP/TABLET) --- */
+            .main-logo { width: 450px; max-width: 100%; max-height: 250px; margin-bottom: 30px; }
+            
+            .tough-love-box { padding: 30px; }
+            .badge-aviso { font-size: 20px; padding: 4px 20px; }
+            .tough-love-text { font-size: 18px; }
+            
+            #search-input { font-size: 24px; padding: 15px 20px 15px 56px; }
+            .search-icon { width: 24px; height: 24px; left: 20px; }
+            
+            .info-container { padding: 20px; }
+            .product-id { font-size: 18px; margin-bottom: 5px; }
+            .product-name { font-size: 20px; height: 44px; margin-bottom: 10px; }
+            .product-price { font-size: 32px; padding: 0 10px; }
+            
+            .play-button { width: 50px; height: 50px; bottom: 15px; right: 15px; }
+            .play-button svg { width: 25px; height: 25px; }
+
+            .whatsapp-button {
+                padding: 12px 25px;
+                font-size: 26px;
+                bottom: 30px;
+                right: 30px;
+            }
+            .whatsapp-button .whatsapp-icon { width: 28px; height: 28px; }
+
+            .site-footer p { font-size: 18px; margin-bottom: 10px; }
+            .site-footer a { font-size: 22px; }
+        }
+
+        @media (min-width: 1024px) {
+            .product-grid { grid-template-columns: repeat(4, 1fr); gap: 30px; }
+            .main-title { font-size: 80px; }
+        }
+    </style>
 </head>
 <body>
 
-  <nav class="navbar">
-    <a href="#" class="logo">
-      <span class="logo-text">PAIISE<span class="accent">.</span></span>
-    </a>
-    <a class="btn-nav" href="https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe" target="_blank" rel="noopener noreferrer">Comece agora</a>
-  </nav>
-
-  <main>
-    <section class="hero-modern">
-      <h1 class="hero-headline">O melhor streaming do país.<br>Assista tudo em um só lugar.</h1>
-      
-      <div class="player-wrapper" id="main-player">
+    <div class="container">
         
-        <div class="mascara-botao-drive"></div>
+        <div class="branding-area">
+            <button type="button" id="share-button" class="share-button" title="Compartilhar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path d="M13 4.5a2.5 2.5 0 11.702 4.283l-4.423 2.212a2.513 2.513 0 010 1.01l4.423 2.212a2.5 2.5 0 11-.53 1.06l-4.423-2.212a2.5 2.5 0 110-3.132l4.423-2.212A2.5 2.5 0 0113 4.5z" /></svg>
+            </button>
+            
+            <img src="logopaiise.png" alt="Logo PAIISE" class="main-logo" onerror="this.onerror=null; this.src='https://via.placeholder.com/450x250/000000/e50914?text=LOGO+PAIISE';">
+            
+            <h2 class="main-title">TRANSFORME SUA SALA NO MELHOR LUGAR DO MUNDO.</h2>
+            
+            <div class="tough-love-box">
+                <span class="badge-aviso">SELEÇÃO PREMIUM SHOPEE</span>
+                <p class="tough-love-text">
+                    A sua sala deve ser o seu refúgio definitivo. <strong>Cinema de alta definição, tecnologia imersiva, setup gamer e muito conforto.</strong> Nossa curadoria escolheu a dedo os melhores achados para elevar o seu bem-estar e transformar o seu ambiente. <strong>Não perca tempo procurando, garanta os melhores achados agora!</strong>
+                </p>
+            </div>
 
-        <iframe class="drive-iframe" src="https://drive.google.com/file/d/1Q62SO7AsBE6MqG8Rm3CCjWsvFANJlmWg/preview" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-      </div>
-
-      <div class="hero-actions">
-        <div class="action-group">
-          <button type="button" class="btn-main btn-secondary" onclick="startExperience()">Assistir Demonstração</button>
-          <span class="btn-subtext">Acesso livre temporário</span>
+            <p class="main-subtitle">TECNOLOGIA, GAMES E BEM-ESTAR. DESCUBRA OS ACHADOS QUE VÃO REVOLUCIONAR SEU ESPAÇO.</p>
         </div>
 
-        <div class="action-group">
-          <a href="https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe" class="btn-main" target="_blank" rel="noopener noreferrer">Ter Acesso Completo</a>
-          <span class="btn-subtext">Libere todas as plataformas agora</span>
-        </div>
-      </div>
-    </section>
+        <main>
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
+                <input type="text" id="search-input" placeholder="BUSCAR PRODUTOS SELECIONADOS...">
+            </div>
+            <div id="product-grid" class="product-grid"></div>
+            <p id="no-results" class="no-results-message" style="display: none;">PRODUTO NÃO ENCONTRADO.</p>
+        </main>
 
-    <section class="section">
-      <div class="container">
-        <div class="features-grid">
-          <article class="feature-card">
-            <div class="feature-icon">🎬</div>
-            <h3>Tudo em um só lugar</h3>
-            <p>Filmes, séries e canais ao vivo centralizados. Uma experiência pensada para quem quer praticidade.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">🎮</div>
-            <h3>Um único controle</h3>
-            <p>Menos confusão e menos aplicativos. Acesse todo o entretenimento que você precisa sem complicações.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon">🍿</div>
-            <h3>Experiência Premium</h3>
-            <p>Interface elegante, reprodução rápida e conteúdo de alta qualidade disponível a qualquer momento.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <p>PAIISE &copy; 2026. Todos os direitos reservados.</p>
-    </footer>
-  </main>
-
-  <div class="paywall-overlay" id="paywall">
-    <div class="paywall-card">
-      <span class="card-header">OFERTA ESPECIAL</span>
-      <img src="paiise.png" alt="Experiência Premium" class="paywall-image" />
-      <h2>A experiência completa te aguarda</h2>
-      <p>Libere agora o acesso vitalício a todas as plataformas, canais e filmes sem interrupções e em altíssima qualidade.</p>
-      
-      <div class="paywall-actions">
-        <a href="https://pay.kirvano.com/64d2f1df-3435-4e01-bbdf-8b591841e0dd?aff=e07842fc-6bae-41cb-a4af-9c8dc0f4a6fe" class="btn-buy-now" target="_blank" rel="noopener noreferrer">Acessar oferta</a>
-        <button class="btn-resume" onclick="resumeVideo()">Continuar assistindo</button>
-      </div>
     </div>
-  </div>
 
-  <script>
-    const paywall = document.getElementById('paywall');
-    const mainPlayer = document.getElementById('main-player');
-    let temporizadorBloqueio;
-    
-    // 300000 ms = 5 minutos exatos
-    const DEMO_DURATION = 300000; 
+    <a href="https://wa.me/message/DQJBWVDS3BJ4N1" target="_blank" class="whatsapp-button" title="Fale com Rodrigo Online">
+        <img src="wattslogo.png" alt="WhatsApp Icon" class="whatsapp-icon" onerror="this.style.display='none'">
+        <span class="online-dot"></span>
+        <span>RODRIGO ONLINE</span>
+    </a>
 
-    function startExperience() {
-      if (mainPlayer) {
-        mainPlayer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      
-      const hasUsedDemo = localStorage.getItem('paiise_demo_locked');
-      if (hasUsedDemo === 'true') {
-        triggerPaywall();
-        return; 
-      }
-      
-      clearTimeout(temporizadorBloqueio);
-      temporizadorBloqueio = setTimeout(() => {
-        triggerPaywall();
-      }, DEMO_DURATION);
-    }
+    <div id="video-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="close-button">&times;</button>
+            <div id="modal-video-player" class="video-player-container"></div>
+        </div>
+    </div>
 
-    function triggerPaywall() {
-      paywall.style.display = 'flex';
-      document.body.classList.add('modal-open');
-      
-      localStorage.setItem('paiise_demo_locked', 'true');
-    }
+    <footer class="site-footer">
+        <p>Telefone para contato: (11) 91607 2188</p>
+        <p>&copy; <span id="current-year">2026</span> PAIISE | Todos os direitos reservados.</p>
+        <p>Desenvolvido por <a href="https://www.instagram.com/a_provados/" target="_blank" rel="noopener noreferrer">Agência Aprovados</a></p>
+    </footer>
 
-    function resumeVideo() {
-      paywall.style.display = 'none';
-      document.body.classList.remove('modal-open');
-      
-      clearTimeout(temporizadorBloqueio);
-      temporizadorBloqueio = setTimeout(() => {
-        triggerPaywall();
-      }, DEMO_DURATION);
-    }
-  </script>
+    <script>
+        const products = [
+            {
+                id: "Nº1",
+                name: "Projetor 4K HD 150 Polegadas Celular, Xbox, PS, Pc, Wifi HY300 Pro Magcubic Envio Imediato",
+                price: "175,00",
+                storeLink: "https://s.shopee.com.br/7ppHyVGbBM",
+                linkImage: "logo (Post para Instagram (45)).png", 
+                linkVideo: "https://down-bs-br.vod.susercontent.com/api/v4/11110105/mms/br-11110105-6kfks-lvkveb43he271b.16000081716325569.mp4" 
+            },
+            {
+                id: "Nº2",
+                name: "Almofada Porta Pipoca com Balde e copo 3 Peças",
+                price: "50,90",
+                storeLink: "https://s.shopee.com.br/5VRNVkgPFB",
+                linkImage: "https://down-br.img.susercontent.com/file/br-11134103-7qukw-lex63bje6gbje0.webp",
+                linkVideo: "https://down-tx-br.vod.susercontent.com/api/v4/11110103/mms/br-11110103-6kfks-ln34hsvz1m1021.16000051697817498.mp4"
+            },
+            {
+                id: "Nº3",
+                name: "Kit Almofada Com Porta Pipoca Balde + 2 Copos Netflix, Presente dia dos Namorados",
+                price: "70,90",
+                storeLink: "https://s.shopee.com.br/9UxWK3J2u6",
+                linkImage: "https://down-br.img.susercontent.com/file/d3342b4fb8ef930136ea52b5c75b2c98.webp",
+                linkVideo: "https://down-bs-br.vod.susercontent.com/api/v4/11110103/mms/br-11110103-6v5dk-mfbbq1x1j7yc6d.16000051759332483.mp4"
+            },
 
+             {
+                id: "Nº4",
+                name: "Console Portátil R36S + de 15.000 Jogos Vídeo Game 64g Linux Tela IPS 3.5 Polegadas a Pronta Entrega",
+                price: "170,90",
+                storeLink: "https://s.shopee.com.br/2LULot0RQF",
+                linkImage: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m3arnxtthelx4d@resize_w900_nl.webp",
+                linkVideo: "https://down-tx-br.vod.susercontent.com/api/v4/11110105/mms/br-11110105-6kfkp-m3azofrguiu31f.16000081733161346.mp4"
+            },
+
+             {
+                id: "Nº5",
+                name: "2026 NOVO Vídeo Game Stick M15 Pro 4k 64gb Hdmi Com 2 Controles Se Fio +20mil Jogos Moby",
+                price: "98,90",
+                storeLink: "https://s.shopee.com.br/7Kt1lrQWQC",
+                linkImage: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m3arnxtthelx4d@resize_w900_nl.webp",
+                linkVideo: "https://down-ws-br.vod.susercontent.com/api/v4/11110106/mms/sg-11110106-6v8im-me1baazqo0sle8.16004351774392860.mp4"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            const productGrid = document.getElementById('product-grid');
+            const noResultsMessage = document.getElementById('no-results');
+            const shareButton = document.getElementById('share-button');
+            const currentYearSpan = document.getElementById('current-year');
+            const videoModal = document.getElementById('video-modal');
+            const closeModalButton = document.getElementById('close-modal');
+            const modalVideoPlayer = document.getElementById('modal-video-player');
+
+            if(currentYearSpan) { currentYearSpan.textContent = new Date().getFullYear(); }
+
+            function renderProducts(productsToRender) {
+                productGrid.innerHTML = '';
+                if (productsToRender.length === 0) {
+                    noResultsMessage.style.display = 'block';
+                    return;
+                }
+                noResultsMessage.style.display = 'none';
+
+                productsToRender.forEach(product => {
+                    const finalImageSrc = product.linkImage || product.localImage || 'placeholder.png';
+                    const finalVideoSrc = product.linkVideo || product.localVideo;
+
+                    let playButtonHTML = '';
+                    if (finalVideoSrc) {
+                        playButtonHTML = `
+                            <div class="play-button" data-video-src="${finalVideoSrc}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        `;
+                    }
+
+                    const productCard = document.createElement('div');
+                    productCard.innerHTML = `
+                        <a href="${product.storeLink}" target="_blank" class="product-card" rel="noopener noreferrer">
+                            <div class="media-container">
+                                <img class="media-image" src="${finalImageSrc}" alt="${product.name}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x450/1a1a1a/e50914?text=IMAGEM+OFF';">
+                                ${playButtonHTML}
+                            </div>
+                            <div class="info-container">
+                                <p class="product-id">${product.id}</p>
+                                <h3 class="product-name" title="${product.name}">${product.name}</h3>
+                                <p class="product-price">R$ ${product.price}</p>
+                            </div>
+                        </a>
+                    `;
+                    productGrid.appendChild(productCard);
+                });
+            }
+
+            function openModal(videoSrc) {
+                modalVideoPlayer.innerHTML = `<video src="${videoSrc}" controls autoplay loop playsinline></video>`;
+                videoModal.classList.remove('hidden');
+            }
+
+            function closeModal() {
+                modalVideoPlayer.innerHTML = '';
+                videoModal.classList.add('hidden');
+            }
+
+            productGrid.addEventListener('click', event => {
+                const playButton = event.target.closest('.play-button');
+                if (playButton) {
+                    event.preventDefault();       
+                    event.stopPropagation();      
+                    openModal(playButton.dataset.videoSrc);
+                }
+            });
+
+            closeModalButton.addEventListener('click', closeModal);
+            videoModal.addEventListener('click', e => { if (e.target === videoModal) closeModal(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+            searchInput.addEventListener('input', () => {
+                const term = searchInput.value.toLowerCase().trim();
+                const filtered = products.filter(p => p.id.toLowerCase().includes(term));
+                renderProducts(filtered);
+            });
+            
+            shareButton.addEventListener('click', async () => {
+                if (navigator.share) {
+                    await navigator.share({ title: 'PAIISE', url: window.location.href });
+                } else {
+                    navigator.clipboard.writeText(window.location.href);
+                    alert('LINK COPIADO!');
+                }
+            });
+
+            renderProducts(products);
+        });
+    </script>
 </body>
 </html>
